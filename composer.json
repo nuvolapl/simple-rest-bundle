@@ -1,0 +1,29 @@
+{
+  "name": "nuvolapl/simple-rest-bundle",
+  "type": "library",
+  "license": "proprietary",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": "^8.1",
+    "symfony/config": "^6.1",
+    "symfony/dependency-injection": "^6.1",
+    "symfony/event-dispatcher": "^6.1",
+    "symfony/http-foundation": "^6.1",
+    "symfony/http-kernel": "^6.1",
+    "symfony/serializer": "^6.1",
+    "symfony/validator": "^6.1"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": {
+      "*": "dist"
+    },
+    "sort-packages": true
+  },
+  "autoload": {
+    "psr-4": {
+      "Nuvola\\SimpleRestBundle\\": "src/"
+    }
+  }
+}

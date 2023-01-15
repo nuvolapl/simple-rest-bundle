@@ -1,0 +1,19 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  nuvola.argument_resolver.filter_query_string:
+    class: Nuvola\SimpleRestBundle\ArgumentResolver\QueryStringArgumentResolver
+    arguments: [] # compiled
+
+  nuvola.argument_resolver.pagination_query_string:
+    class: Nuvola\SimpleRestBundle\ArgumentResolver\QueryStringArgumentResolver
+    arguments: [] # compiled
+
+  Nuvola\SimpleRestBundle\ArgumentResolver\ContentArgumentResolver: ~
+
+  Nuvola\SimpleRestBundle\EventSubscriber\ResponseEventSubscriber: ~
+
+  Nuvola\SimpleRestBundle\Utils\ObjectRewriter\SymfonySerializerBasedRewriter: ~
+  Nuvola\SimpleRestBundle\Utils\ObjectRewriter\ObjectRewriterInterface: '@Nuvola\SimpleRestBundle\Utils\ObjectRewriter\SymfonySerializerBasedRewriter'
