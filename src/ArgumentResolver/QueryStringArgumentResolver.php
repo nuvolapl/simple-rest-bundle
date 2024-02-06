@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Nuvola\SimpleRestBundle\ArgumentResolver;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface;
+use Symfony\Component\HttpKernel\Controller\ValueResolverInterface;
 use Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
 use Symfony\Component\Serializer\Exception\ExceptionInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-final class QueryStringArgumentResolver implements ArgumentValueResolverInterface
+final class QueryStringArgumentResolver implements ValueResolverInterface
 {
     public function __construct(
         private readonly DenormalizerInterface $denormalizer,
@@ -38,6 +38,10 @@ final class QueryStringArgumentResolver implements ArgumentValueResolverInterfac
      */
     public function resolve(Request $request, ArgumentMetadata $argument): iterable
     {
+        if (false === $this->supports($request, $argument)) {
+            return;
+        }
+
         $parameters = $request->query->all($this->queryStringKeyName);
 
         if (empty($parameters)) {

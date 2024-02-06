@@ -13,7 +13,7 @@ use Nuvola\SimpleRestBundle\ArgumentResolver\ContentArgumentResolver;
 
 final class SimpleRestExtension extends ConfigurableExtension
 {
-    public function loadInternal(array $mergedConfig, ContainerBuilder $container)
+    public function loadInternal(array $mergedConfig, ContainerBuilder $container): void
     {
         $loader = new YamlFileLoader(
             $container,
